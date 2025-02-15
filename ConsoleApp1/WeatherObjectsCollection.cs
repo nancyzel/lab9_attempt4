@@ -35,8 +35,8 @@
         /// </summary>
         public WeatherObjectsCollection()
         {
-            weatherObjectsArray = new Weather[100];
-            for (int i = 0; i < 100; i++)
+            weatherObjectsArray = new Weather[10];
+            for (int i = 0; i < 10; i++)
             {
                 weatherObjectsArray[i] = new Weather();
             }

@@ -5,7 +5,7 @@
         public static double CountArrayTemperatureAmplitude(WeatherObjectsCollection weatherArray)
         {
             double temperatureAmplitude;
-            if (weatherArray == null || weatherArray.Length == 0)
+            if (OutputData.CheckIfCollectionIsEmpty(weatherArray))
                 temperatureAmplitude = -1;
             else
             {
@@ -91,36 +91,40 @@
             Console.WriteLine();
 
             //Part 3
-            WeatherObjectsCollection weatherArray1 = new(5); //создание новой коллекции, содержащей 5 объектов, заполненных случайными числами
-            OutputData.PrintWeatherArrayElements(weatherArray1); //вывод объектов коллекции
+            WeatherObjectsCollection weatherArray = new(); // создание новой коллекции, состоящей по умолчанию из 10 экземпляров класса Weather
+            OutputData.PrintWeatherArrayElements(weatherArray); // вывод объектов коллекции
             Console.WriteLine();
 
-            WeatherObjectsCollection weatherArray2 = OutputData.CreateWeatherCollection(5); //создание новой коллекции, содержащей 5 объектов, заполненных случайными числами
-            OutputData.PrintWeatherArrayElements(weatherArray2); //вывод объектов коллекции
+            WeatherObjectsCollection weatherArray1 = new(5); // создание новой коллекции, содержащей 5 объектов, заполненных случайными числами
+            OutputData.PrintWeatherArrayElements(weatherArray1); // вывод объектов коллекции
+            Console.WriteLine();
+            
+            WeatherObjectsCollection weatherArray2 = OutputData.CreateWeatherCollection(5); // создание новой коллекции, содержащей 5 объектов, заполненных вручную
+            OutputData.PrintWeatherArrayElements(weatherArray2); // вывод объектов коллекции
             Console.WriteLine();
 
-            WeatherObjectsCollection weatherArray3 = new(weatherArray1); //создание новой коллекции, являющейся копией другой коллекции
-            OutputData.PrintWeatherArrayElements(weatherArray3); //вывод созданной коллекции
+            WeatherObjectsCollection weatherArray3 = new(weatherArray1); // создание новой коллекции, являющейся копией другой коллекции
+            OutputData.PrintWeatherArrayElements(weatherArray3); // вывод созданной коллекции
             Console.WriteLine();
-
-            weatherArray1[0] = new Weather(30, 6, 800); //запись объекта с существующим индексом
-            OutputData.PrintWeatherArrayElements(weatherArray1);
-            OutputData.PrintWeatherArrayElements(weatherArray2);
-
-            OutputData.PrintObjectProperties(weatherArray1[1]); //получение объекта с существующим индексом
 
             try
             {
-                OutputData.PrintObjectProperties(weatherArray1[5]); //получение объекта с несуществующим индексом
+                weatherArray1[0] = new Weather(30, 6, 800); // запись объекта с существующим индексом
+                OutputData.PrintWeatherArrayElements(weatherArray1); // при изменении значений одного из объектов копируемой коллекции
+                OutputData.PrintWeatherArrayElements(weatherArray3); // значения в коллекции-копии не меняются
+
+                OutputData.PrintObjectProperties(weatherArray1[1]); // получение объекта с существующим индексом
+                OutputData.PrintObjectProperties(weatherArray1[5]); // получение объекта с несуществующим индексом
             }
             catch (IndexOutOfRangeException exception)
             {
                 Console.WriteLine(exception.Message);
             }
+            Console.WriteLine();
 
             try
             {
-                weatherArray1[-1] = new Weather(); //запись объекта с несуществующим индексом
+                weatherArray1[-1] = new Weather(); // запись объекта с несуществующим индексом
             }
             catch (IndexOutOfRangeException exception)
             {
