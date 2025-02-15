@@ -199,23 +199,26 @@
 
         public static void PrintWeatherArrayElements(WeatherObjectsCollection weatherArray)
         {
+            Tuple<double, int, int>[] weatherCollection = weatherArray.GetCollectionElements();
             Console.WriteLine("Состав массива объектов Weather:");
-            for (int i = 0; i < weatherArray.Length; i++)
+            for (int i = 0; i < weatherCollection.Length; i++)
             {
-                PrintObjectProperties(weatherArray[i]);
+                (double currentTemperature, int currentHumidity, int currentPressure) = weatherCollection[i];
+                Console.WriteLine($"Температура воздуха {currentTemperature}°C; влажность {currentHumidity}%; давление {currentPressure} мм рт. ст.");
             }
         }
 
         public static WeatherObjectsCollection CreateWeatherCollection(int collectionLength)
         {
-            WeatherObjectsCollection weatherArray = new(collectionLength); //создание новой коллекции, содержащей collectionLength объектов, заполненных случайными числами
-            for (int i = 0; i < weatherArray.Length; i++)
+            Tuple<double, int, int>[] inputWeatherArray = new Tuple<double, int, int>[collectionLength];
+            for (int i = 0; i < inputWeatherArray.Length; i++)
             {
                 double currentTemperature = CheckReadDoubleNumber($"Введите температуру в градусах Цельсия для объекта с номером {i + 1}:", -273.15, 1000000);
-                int currentHumidity = CheckReadIntegerNumber("Введите влажность воздуха в процентах для объекта с номером {i+1}:", 0, 100);
-                int currentPressure = CheckReadIntegerNumber("Введите атмосферное давление в мм рт. ст. для объекта с номером {i+1}:", 700, 900);
-                weatherArray[i] = new Weather(currentTemperature, currentHumidity, currentPressure);
+                int currentHumidity = CheckReadIntegerNumber($"Введите влажность воздуха в процентах для объекта с номером {i+1}:", 0, 100);
+                int currentPressure = CheckReadIntegerNumber($"Введите атмосферное давление в мм рт. ст. для объекта с номером {i+1}:", 700, 900);
+                inputWeatherArray[i] = Tuple.Create(currentTemperature, currentHumidity, currentPressure);
             }
+            WeatherObjectsCollection weatherArray = new(collectionLength, inputWeatherArray);
             return weatherArray;
         }
     }

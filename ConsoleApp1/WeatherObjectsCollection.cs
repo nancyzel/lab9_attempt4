@@ -57,6 +57,17 @@
             collectionsQuantity++;
         }
 
+        public WeatherObjectsCollection(int arrayLength, Tuple<double, int, int>[] weatherCollection)
+        {
+            weatherObjectsArray = new Weather[arrayLength];
+            for (int i = 0; i < arrayLength; i++)
+            {
+                (double currentTemperature, int currentHumidity, int currentPressure) = weatherCollection[i];
+                weatherObjectsArray[i] = new Weather(currentTemperature, currentHumidity, currentPressure);
+            }
+            collectionsQuantity++;
+        }
+
         /// <summary>
         /// создание копии коллекции объектов Weather с использованием глубокого копирования
         /// </summary>
@@ -74,12 +85,14 @@
         /// <summary>
         /// вывод объектов коллекции в консоль
         /// </summary>
-        public void GetCollectionelements()
+        public Tuple<double, int, int>[] GetCollectionElements()
         {
+            Tuple<double, int, int>[] weatherCollection = new Tuple<double, int, int>[this.Length];
             for (int i = 0; i < this.Length; i++)
             {
-                Console.WriteLine(weatherObjectsArray[i]);
+                weatherCollection[i] = Tuple.Create(weatherObjectsArray[i].Temperature, weatherObjectsArray[i].Humidity, weatherObjectsArray[i].Pressure);
             }
+            return weatherCollection;
         }
 
         /// <summary>
