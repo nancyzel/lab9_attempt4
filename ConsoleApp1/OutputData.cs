@@ -2,7 +2,7 @@
 {
     internal static class OutputData
     {
-        public static bool CheckIfCollectionIsEmpty(WeatherObjectsCollection weatherObjects) => (!(weatherObjects is null) && weatherObjects.Length != 0);
+        public static bool CheckIfCollectionIsEmpty(WeatherObjectsCollection weatherObjects) => (weatherObjects is null || weatherObjects.Length == 0);
 
         static bool CheckDiapasonBelonging(int number, int startNumber, int endNumber) => (startNumber <= number && number <= endNumber);
 

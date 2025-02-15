@@ -2,7 +2,7 @@
 namespace lab9_tests
 {
     [TestClass]
-    public sealed class Test1
+    public sealed class TestWeather
     {
         [TestMethod]
         public void TestGetObjectsQuantity()

@@ -1,6 +1,6 @@
 ﻿namespace lab9
 {
-    internal class Program
+    public class Program
     {
         public static double CountArrayTemperatureAmplitude(WeatherObjectsCollection weatherArray)
         {
@@ -25,7 +25,7 @@
                         }
                     }
                 }
-                temperatureAmplitude = maximumTemperature - minimumTemperature;
+                temperatureAmplitude = Math.Round(maximumTemperature - minimumTemperature);
             }
             return temperatureAmplitude;
         }
