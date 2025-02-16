@@ -112,4 +112,33 @@ public class TestWeatherObjectsCollection
             Assert.AreEqual(expectedWeatherObjects[i], actualWeatherObjects[i]);
         }
     }
+
+    [TestMethod]
+    [ExpectedException(typeof(IndexOutOfRangeException))]
+    public void TestIndexatorGetOutOfRange()
+    {
+        WeatherObjectsCollection weatherObjects = new WeatherObjectsCollection(3);
+        Weather currentWeather1 = weatherObjects[-1];
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(IndexOutOfRangeException))]
+    public void TestIndexatorSetOutOfRange()
+    {
+        WeatherObjectsCollection weatherObjects = new WeatherObjectsCollection(3);
+        weatherObjects[-1] = new Weather();
+    }
+
+
+    [TestMethod]
+    public void TestIndexatorSet()
+    {
+        //Arrange
+        Weather expectedWeather = new Weather();
+        //Act
+        WeatherObjectsCollection actualWeatherObjects = new WeatherObjectsCollection(3);
+        actualWeatherObjects[0] = new Weather();
+        //Assert
+        Assert.AreEqual(expectedWeather, actualWeatherObjects[0]);
+    }
 }
