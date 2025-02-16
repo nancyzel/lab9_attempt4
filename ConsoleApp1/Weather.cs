@@ -20,7 +20,7 @@
         /// <summary>
         /// количество созданных объектов
         /// </summary>
-        static int objectsQuantity = 0;
+        public static int objectsQuantity = 0;
 
         /// <summary>
         /// обработка значения для поля temperature

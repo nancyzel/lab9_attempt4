@@ -15,12 +15,7 @@
         /// <summary>
         /// число созданных коллекций
         /// </summary>
-        static int collectionsQuantity = 0;
-
-        /// <summary>
-        /// длина коллекции объектов Weather
-        /// </summary>
-        private int arrayLength;
+        public static int collectionsQuantity = 0;
 
         /// <summary>
         /// длина коллекции объектов Weather
