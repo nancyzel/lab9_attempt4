@@ -20,7 +20,7 @@
         /// <summary>
         /// количество созданных объектов
         /// </summary>
-        public static int objectsQuantity = 0;
+        private static int objectsQuantity = 0;
 
         /// <summary>
         /// обработка значения для поля temperature
@@ -226,7 +226,7 @@
         public static Weather operator -(Weather currentWeather, double temperatureDelta)
         {
             Weather updatedWeather = new Weather();
-            updatedWeather.Temperature = currentWeather.Temperature - temperatureDelta;
+            updatedWeather.Temperature = Math.Round(currentWeather.Temperature - temperatureDelta, 4);
             updatedWeather.Humidity = currentWeather.Humidity;
             updatedWeather.Pressure = currentWeather.Pressure;
             return updatedWeather;
@@ -235,9 +235,9 @@
         public static Weather operator *(Weather currentWeather, double parametersChangePercent)
         {
             Weather updatedWeather = new Weather();
-            updatedWeather.Temperature = currentWeather.Temperature * (1 + parametersChangePercent);
-            updatedWeather.Humidity = (int)(currentWeather.Humidity * (1 + parametersChangePercent));
-            updatedWeather.Pressure = (int)(currentWeather.Pressure * (1 + parametersChangePercent));
+            updatedWeather.Temperature = Math.Round(currentWeather.Temperature * (1 + parametersChangePercent/(double)100), 4);
+            updatedWeather.Humidity = (int)(currentWeather.Humidity * (1 + parametersChangePercent / (double)100));
+            updatedWeather.Pressure = (int)(currentWeather.Pressure * (1 + parametersChangePercent / (double)100));
             return updatedWeather;
         }
 

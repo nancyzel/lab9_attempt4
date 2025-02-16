@@ -5,7 +5,7 @@
         /// <summary>
         /// для генерации случайных чисел в объектах Weather
         /// </summary>
-        Random randomNumber = new Random();
+        private Random randomNumber = new Random();
 
         /// <summary>
         /// коллекция объектов Weather
@@ -15,7 +15,7 @@
         /// <summary>
         /// число созданных коллекций
         /// </summary>
-        public static int collectionsQuantity = 0;
+        private static int collectionsQuantity = 0;
 
         /// <summary>
         /// длина коллекции объектов Weather

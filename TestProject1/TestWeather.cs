@@ -176,5 +176,53 @@ namespace lab9_tests
             //Assert
             Assert.AreEqual(expectedResultOppositeWeather, actualResultOppositeWeather);
         }
+
+        [TestMethod]
+        public void TestOperatorExplicitFalseResult()
+        {
+            //Arrange
+            bool expectedResult = false;
+            //Act
+            Weather actualWeather = new Weather(40, 78, 760);
+            bool actualResult = (bool)actualWeather;
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestOperatorExplicitTrueResult()
+        {
+            //Arrange
+            bool expectedResult = true;
+            //Act
+            Weather actualWeather = new Weather(40, 78, 770);
+            bool actualResult = (bool)actualWeather;
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestOperatorMinus()
+        {
+            //Arrange
+            Weather expectedWeather = new Weather(45.4543, 78, 760);
+            //Act
+            Weather newWeather = new Weather(40, 78, 760);
+            Weather actualWeather = newWeather - (-5.4543);
+            //Assert
+            Assert.AreEqual(expectedWeather, actualWeather);
+        }
+
+        [TestMethod]
+        public void TestOperatorMultiplication()
+        {
+            //Arrange
+            Weather expectedWeather = new Weather(45, 70, 760);
+            //Act
+            Weather newWeather = new Weather(36, 56, 608);
+            Weather actualWeather = newWeather * 25;
+            //Assert
+            Assert.AreEqual(expectedWeather, actualWeather);
+        }
     }
 }

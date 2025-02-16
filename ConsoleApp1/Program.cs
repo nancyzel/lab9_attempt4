@@ -25,7 +25,7 @@
                         }
                     }
                 }
-                temperatureAmplitude = Math.Round(maximumTemperature - minimumTemperature);
+                temperatureAmplitude = Math.Round(maximumTemperature - minimumTemperature, 2);
             }
             return temperatureAmplitude;
         }
